@@ -1,30 +1,21 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import './style.css';
-import Question from "./question";
 import Intro from "./intro";
-import {connect} from 'react-redux'
+import NotFound from "./not_found";
+import Question from "./question";
+import {Route, Switch} from "react-router-dom";
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
-      <div className="App">
-        { this.props.currentMenu === "Intro" ? <Intro /> : null }
-        { this.props.currentMenu === "Question" ? <Question /> : null }
-      </div>
+      <Switch className="App">
+        <Route exact path="/" component={Intro} />
+        <Route path="/question" component={Question} />
+        <Route component={NotFound} />
+      </Switch>
     );
   };
 }
 
-const mapStateToProps = (state) => {
-  console.log(state);
-  return {
-    currentMenu: state.question.currentMenu
-  }
-}
-
-export default connect(mapStateToProps, {})(App)
+export default App

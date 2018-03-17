@@ -1,3 +1,6 @@
-import question from './question'
-import {combineReducers} from 'redux'
-export default combineReducers({question})
+import { combineReducers } from 'redux'
+import { routerReducer } from 'react-router-redux'
+
+export default combineReducers({
+  routing: routerReducer
+})

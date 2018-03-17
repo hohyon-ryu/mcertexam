@@ -1,9 +1,19 @@
-import {Router, Route} from 'react-router'
-import App from './App'
 import React from 'react'
+import Intro from "./App/intro";
+import Question from "./App/question";
+import { Route, Switch, NotFound } from 'react-router-dom'
 
-export default (props) => (
-  <Router {...props}>
-    <Route path='/' component={App} />
-  </Router>
-)
+class Routes extends React.Component {
+  render() {
+    return (
+      <Switch>
+        <Route exact path="/" component={Intro} />
+        <Route path="/question" component={Question} />
+        <Route component={ Question } />
+      </Switch>
+    )
+  }
+}
+
+
+export default Routes

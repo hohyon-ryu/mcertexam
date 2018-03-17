@@ -1,17 +1,7 @@
 import React from 'react'
-import {connect} from 'react-redux'
-import {changeMenu} from "../../actions";
+import {Link} from 'react-router-dom'
 
 class Intro extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
-  startExam = (e) => {
-    e.preventDefault();
-    this.props.changeMenu("Question");
-  };
-
   render() {
     return (
       <div className="Intro">
@@ -19,24 +9,20 @@ class Intro extends React.Component {
           <h2>결혼 자격 시험</h2>
         </div>
         <p className="App-intro">
-          결혼 전 미리 알았었으면 좋았을 이야기들을 담았습니다.<br/>
-          결혼 후의 세상은 상상했던 것과는 너무도 달랐습니다.<br/>
-          그리고 행복한 가정을 이루기가지 참 오랜 시간과 노력이 들었습니다.<br/><br/>
-          총 25 문제가 주어집니다.
+          이미 결혼해서 많은 것들을 겪은 선배들이 만들어가는 결혼 자격 시험.<br/>
+          결혼을 하면 부부는 최고의 파트너이자 한 배를 탄 식구입니다.<br/>
+          부부가 만들어내는 시너지를 극대화 하면 엄청난 일들이 생깁니다.<br/><br/>
+          총 20 문제가 주어집니다.
         </p>
 
-        <button type="button" className="btn btn-primary"
-                onClick={this.startExam}>시험 시작하기
-        </button>
+        <Link to="/question" className="main-button start btn btn-primary">시험 시작하기
+        </Link>
+        <br /><br />
+        <Link to="/workshop" className="main-button btn btn-secondary">문제 제안 및 참여하기
+        </Link>
       </div>
     )
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    currentMenu: state.currentMenu
-  }
-}
-
-export default connect(mapStateToProps, {changeMenu})(Intro)
+export default Intro
