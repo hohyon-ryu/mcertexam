@@ -11,8 +11,6 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.props)
-    console.log(this.props.currentMenu)
     return (
       <div className="App">
         { this.props.currentMenu === "Intro" ? <Intro /> : null }
