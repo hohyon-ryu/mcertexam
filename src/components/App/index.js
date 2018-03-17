@@ -1,21 +1,32 @@
 import React, { Component } from 'react';
-import logo from 'components/App/logo.svg';
+import 'bootstrap/dist/css/bootstrap.css';
 import './style.css';
+import Question from "./question";
+import Intro from "./intro";
+import {connect} from 'react-redux'
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+  }
+
   render() {
+    console.log(this.props)
+    console.log(this.props.currentMenu)
     return (
       <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        { this.props.currentMenu === "Intro" ? <Intro /> : null }
+        { this.props.currentMenu === "Question" ? <Question /> : null }
       </div>
     );
+  };
+}
+
+const mapStateToProps = (state) => {
+  console.log(state);
+  return {
+    currentMenu: state.question.currentMenu
   }
 }
 
-export default App;
+export default connect(mapStateToProps, {})(App)
