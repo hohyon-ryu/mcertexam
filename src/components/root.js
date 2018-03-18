@@ -18,6 +18,9 @@ class Root extends Component {
   }
 
   render() {
+    console.log("root state")
+    console.log(store.getState())
+
     return (
       <Provider store={store}>
         <ConnectedRouter history={history}>
